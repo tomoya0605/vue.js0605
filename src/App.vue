@@ -1,9 +1,19 @@
 <template>
   <div>
-    <LikeHeader></LikeHeader>
-    <p>{{ number }}</p>
-    <LikeNumber :total-number="number" @my-click="number = $event"></LikeNumber>
+    <LikeHeader>
+        <h2>みなさん</h2>
+      <template v-slot:title >
+        <h2>こんにちわ</h2>
+      </template>
+        <h3>はじめまして</h3>
+        <p>よろしくお願いします</p>
+      <template v-slot:number>
+        <p>{{ number }}</p>
+      </template>
+    </LikeHeader>
+    <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
     <LikeNumber :total-number="number" ></LikeNumber>
+
   </div>
 </template>
 
@@ -18,6 +28,11 @@ export default {
   },
   components: {
     LikeHeader
+  },
+  methods: {
+    incrementNumber(value) {
+      this.number = value
+    }
   }
 };
 </script>
